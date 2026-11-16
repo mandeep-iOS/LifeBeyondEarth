@@ -1,17 +1,11 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": "react",
-  "env": {
-    "VITE_API_URL": {
-      "description": "Backend API base URL (e.g., https://api.yoursite.com)"
-    }
-  },
-  "routes": [
+  "framework": "vite",
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "destination": "/index.html",
-      "status": 200
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
@@ -25,7 +19,7 @@
       ]
     },
     {
-      "source": "/",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -42,6 +36,5 @@
       ]
     }
   ],
-  "regions": ["sfo1"],
-  "skipBuildStep": false
+  "regions": ["sfo1"]
 }
