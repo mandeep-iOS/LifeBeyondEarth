@@ -1,0 +1,57 @@
+# OS artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Python
+backend/.venv/
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+backend/data/
+backend/*.db
+
+# Node.js
+web-app/node_modules/
+web-app/dist/
+web-app/.turbo/
+web-app/*.log
+
+# Build & cache
+web-app/.next/
+web-app/.cache/
+web-app/test-results/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+
+# Video backups (use source control for originals)
+*.backup
+*.tmp
+
+# Build outputs
+*.log
+build_output.log
+
+# Native iOS project excluded from web submission
+/LifeBeyondEarth/
+/test-results/
+/final-verification.test.ts
+
+# TypeScript build cache
+*.tsbuildinfo

@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* Mirrors MissionTheme.swift: background = black @ 0.95, card = blue @ 0.15,
+   plus the SwiftUI accent palette (blue/purple/green/orange/yellow @ low opacity). */
+@theme {
+  --color-space: #0d0d0d;
+  --color-space-deep: #05050a;
+  --color-card: rgb(0 122 255 / 0.15);
+  --color-card-strong: rgb(0 122 255 / 0.2);
+  --color-ios-blue: #0a84ff;
+  --color-ios-purple: #bf5af2;
+  --color-ios-green: #30d158;
+  --color-ios-orange: #ff9f0a;
+  --color-ios-yellow: #ffd60a;
+  --color-ios-red: #ff453a;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+  --color-theme-background: #092D25;
+  --color-theme-sidebar: #06241E;
+  --color-theme-card: #123D31;
+  --color-theme-elevated: #194A3A;
+  --color-theme-text: #FFFFFF;
+  --color-theme-text-secondary: #D1E3D9;
+  --color-theme-text-muted: #A9C4B5;
+  --color-theme-accent: #69D6A3;
+  --color-theme-button-bg: #DDF4E7;
+  --color-theme-button-text: #092D25;
+  --color-theme-border: #285443;
+  --font-size-scale: 1;
+  --spacing-scale: 1;
+  --border-radius-scale: 8px;
+}
+
+html, body, #root { min-height: 100%; }
+
+body {
+  margin: 0;
+  color: var(--color-theme-text);
+  font-family: var(--font-sans);
+  font-size: calc(16px * var(--font-size-scale));
+  background:
+    radial-gradient(900px 500px at 15% -10%, rgb(10 132 255 / 0.18), transparent 60%),
+    radial-gradient(800px 500px at 100% 10%, rgb(191 90 242 / 0.14), transparent 60%),
+    var(--color-theme-background);
+  background-attachment: fixed;
+  background-color: var(--color-theme-background);
+}
+
+/* Apply spacing scale to elements using Tailwind spacing utilities */
+* {
+  --tw-space-y-reverse: 0;
+  --tw-space-x-reverse: 0;
+}
+
+/* Scale padding, margin via CSS custom properties */
+:root {
+  --spacing-unit: calc(4px * var(--spacing-scale));
+}
+
+/* Tailwind spacing utility scaling */
+.space-y-2 { --space-y: calc(0.5rem * var(--spacing-scale)) !important; }
+.space-y-3 { --space-y: calc(0.75rem * var(--spacing-scale)) !important; }
+.space-y-4 { --space-y: calc(1rem * var(--spacing-scale)) !important; }
+.space-y-6 { --space-y: calc(1.5rem * var(--spacing-scale)) !important; }
+.space-y-8 { --space-y: calc(2rem * var(--spacing-scale)) !important; }
+
+/* Apply border radius scale */
+.rounded, .rounded-lg { border-radius: var(--border-radius-scale) !important; }
+.rounded-xl { border-radius: calc(var(--border-radius-scale) * 1.5) !important; }
+.rounded-2xl { border-radius: calc(var(--border-radius-scale) * 2) !important; }
+.rounded-full { border-radius: 9999px !important; }
+
+body.high-contrast {
+  --color-theme-text-secondary: var(--color-theme-text);
+  --color-theme-text-muted: var(--color-theme-text-secondary);
+}
+
+body.reduced-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+body.larger-text {
+  --font-size-scale: 1.125;
+}
+
+body.visible-focus *:focus-visible {
+  outline: 2px solid var(--color-theme-accent);
+  outline-offset: 2px;
+}
+
+body.color-independent-indicators {
+  --color-status-success: var(--color-theme-accent);
+  --color-status-warning: var(--color-ios-orange);
+  --color-status-error: var(--color-ios-red);
+}
+
+.glass {
+  background: var(--color-card);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 0.35), inset 0 1px 0 rgb(255 255 255 / 0.05);
+}
+.glass-purple { background: rgb(191 90 242 / 0.15); }
+.glass-green { background: rgb(48 209 88 / 0.12); }
+.glass-orange { background: rgb(255 159 10 / 0.12); }
+.glass-red { background: rgb(255 69 58 / 0.14); }
+
+.glow-blue { box-shadow: 0 0 24px rgb(10 132 255 / 0.45); }
+.glow-purple { box-shadow: 0 0 24px rgb(191 90 242 / 0.45); }
+.glow-green { box-shadow: 0 0 20px rgb(48 209 88 / 0.4); }
+.text-glow { text-shadow: 0 0 18px rgb(10 132 255 / 0.7); }
+
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
+.animate-float { animation: float 4s ease-in-out infinite; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+.animate-fade-up { animation: fadeUp .35s ease both; }
+
+@media print {
+  /* Base reset for printing */
+  body { background: #fff !important; color: #000 !important; line-height: 1.5; }
+  aside, nav, header, .print\:hidden { display: none !important; }
+  .glass { background: #fff !important; border: 1px solid #ccc !important; color: #000 !important; box-shadow: none !important; }
+  * { color: #000 !important; text-shadow: none !important; }
+  
+  /* Page setup */
+  html, body { width: 100%; margin: 0; padding: 1rem; font-size: 11pt; }
+  
+  /* Main content area */
+  main { max-width: 8.5in; margin: 0 auto; page-break-after: avoid; }
+  
+  /* Cards and sections */
+  .rounded-xl, .rounded-lg { border: 1px solid #999 !important; page-break-inside: avoid; }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 { page-break-after: avoid; color: #000 !important; }
+  
+  /* Text wrapping */
+  p, div { orphans: 2; widows: 2; page-break-inside: avoid; }
+  
+  /* Grid layouts - stack vertically */
+  .grid { display: block !important; }
+  .space-y-6 > * { page-break-inside: avoid; margin-bottom: 1rem; }
+  
+  /* Telemetry cards - stack vertically and wrap text */
+  .grid.gap-3.md\:grid-cols-3 { display: grid !important; grid-template-columns: 1fr !important; }
+  
+  /* Badge and stat visibility */
+  .print\:break-inside-avoid { page-break-inside: avoid !important; }
+  .print\:grid-cols-1 { grid-template-columns: 1fr !important; }
+  
+  /* Table of contents and links */
+  a { color: #0563c1 !important; text-decoration: underline; }
+  
+  /* NASA OSDR section - ensure visibility */
+  section { page-break-inside: avoid; margin-bottom: 1.5rem; }
+  
+  /* Avoid empty pages */
+  body { page-break-after: auto; }
+}
+
+/* Animated planet globes: equirectangular map scrolled horizontally. */
+.globe-wrap { position: relative; flex-shrink: 0; border-radius: 50%; }
+.globe, .globe-shade { position: absolute; inset: 0; border-radius: 50%; }
+.globe {
+  background-size: auto 100%; background-repeat: repeat-x; background-position: 0 0;
+  animation: globe-spin var(--spin, 60s) linear infinite;
+  box-shadow: 0 0 calc(var(--size) * .12) var(--glow), 0 0 calc(var(--size) * .35) color-mix(in srgb, var(--glow) 45%, transparent);
+}
+.globe-shade {
+  background:
+    radial-gradient(circle at 32% 30%, rgba(255,255,255,.22) 0%, transparent 38%),
+    radial-gradient(circle at 30% 30%, transparent 42%, rgba(0,0,0,.55) 72%, rgba(0,0,0,.92) 100%);
+  box-shadow: inset 0 0 calc(var(--size) * .08) color-mix(in srgb, var(--glow) 90%, white),
+              inset calc(var(--size) * -.08) calc(var(--size) * -.04) calc(var(--size) * .18) color-mix(in srgb, var(--glow) 35%, transparent);
+}
+.globe-ring {
+  position: absolute; left: -35%; right: -35%; top: 42%; height: 16%; border-radius: 50%;
+  border: calc(var(--size) * .05) solid rgba(232,212,154,.65); transform: rotate(-18deg); z-index: 2; pointer-events: none;
+}
+@keyframes globe-spin { to { background-position-x: calc(var(--size) * -2); } }
+@media (prefers-reduced-motion: reduce) { .globe { animation-duration: 600s; } }
+
+/* Layout: fixed sidebar on lg+ */
+@media (min-width: 1024px) { .app-main { padding-left: 15rem; } }
+
+/* Orbital pulse ring on active indicators */
+.orbit-ring { position: absolute; inset: -3px; border-radius: 50%; border: 1.5px solid rgb(10 132 255 / .8); animation: orbit-pulse 1.8s ease-out infinite; pointer-events: none; }
+@keyframes orbit-pulse { from { transform: scale(.85); opacity: .9 } to { transform: scale(1.7); opacity: 0 } }
+
+/* Hover elevation */
+.glass { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+button.glass:hover, a.glass:hover, .card-lift:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgb(0 0 0 / .45), 0 0 18px rgb(10 132 255 / .18); }
+.card-lift { transition: transform .2s ease, box-shadow .2s ease; }
+
+/* Animated meters */
+@keyframes meter-grow { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+.meter-fill { transform-origin: left; animation: meter-grow .9s cubic-bezier(.2,.8,.2,1) both; }
+
+/* Next step card */
+.next-step { background: linear-gradient(120deg, rgb(10 132 255 / .22), rgb(191 90 242 / .18)); border: 1px solid rgb(10 132 255 / .45);
+  box-shadow: 0 0 28px rgb(10 132 255 / .25); animation: next-glow 2.6s ease-in-out infinite; transition: transform .2s ease; }
+.next-step:hover { transform: translateY(-2px); }
+@keyframes next-glow { 0%,100% { box-shadow: 0 0 18px rgb(10 132 255 / .2) } 50% { box-shadow: 0 0 38px rgb(10 132 255 / .5) } }
+
+@media (prefers-reduced-motion: reduce) { .orbit-ring, .next-step, .meter-fill, .animate-fade-up { animation: none !important; } }
+
+/* Deep-space hero backdrop */
+.nebula { position: absolute; border-radius: 50%; filter: blur(60px); will-change: transform; }
+.nebula-a { width: 60%; height: 140%; right: -10%; top: -30%; background: radial-gradient(closest-side, rgb(80 90 255 / .45), transparent); animation: nebula-drift 28s ease-in-out infinite alternate; }
+.nebula-b { width: 50%; height: 120%; left: 25%; bottom: -50%; background: radial-gradient(closest-side, rgb(160 70 240 / .35), transparent); animation: nebula-drift 36s ease-in-out infinite alternate-reverse; }
+@keyframes nebula-drift { from { transform: translate3d(-6%, 3%, 0) scale(1) } to { transform: translate3d(8%, -5%, 0) scale(1.15) } }
+.hero-orbit { position: absolute; border-radius: 50%; border: 1px solid rgb(160 190 255 / .22); border-left-color: transparent; border-bottom-color: transparent; animation: orbit-rot 40s linear infinite; }
+@keyframes orbit-rot { to { transform: rotate(360deg) } }
+@media (prefers-reduced-motion: reduce) { .nebula, .hero-orbit { animation: none } }
+
+/* Keyboard accessibility: visible focus indicators */
+@media (prefers-reduced-motion: no-preference) {
+  *:focus-visible { outline: 2px solid rgb(10 132 255); outline-offset: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *:focus-visible { outline: 2px solid rgb(10 132 255); outline-offset: 2px; }
+}

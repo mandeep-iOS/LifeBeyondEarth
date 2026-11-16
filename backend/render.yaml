@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: life-beyond-earth-api
+    runtime: docker
+    rootDir: backend
+    dockerfile: Dockerfile
+    region: oregon
+    plan: free
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: PYTHONDONTWRITEBYTECODE
+        value: "1"
+    healthCheckPath: /health
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  - type: web
+    name: life-beyond-earth-web
+    runtime: static
+    rootDir: web-app/dist
+    envVars:
+      - key: VITE_API_URL
+        value: "${RENDER_EXTERNAL_URL}"
+
+databases:
+  - name: life-beyond-earth-db
+    databaseName: lbe
+    user: lbe_user
+    region: oregon
+    plan: free
