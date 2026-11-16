@@ -1,6 +1,9 @@
 # Life Beyond Earth - 30-Second Demo Script
 
 **NASA Space Apps Challenge 2026 Submission Video**
+- **Submitted Demo Video (≤30s):** https://youtu.be/Gf19hmTQ75Y
+- **Live Hosted Web App:** https://lifebeyondearth-public.vercel.app
+- **Live FastAPI Backend Docs:** https://lifebeyondearth.onrender.com
 
 ---
 
@@ -72,16 +75,17 @@
 
 ## Competition Submission Checklist
 
-- [ ] Video is ≤30 seconds and 1920×1080 MP4
-- [ ] All SI-generated visuals marked with "SI-Generated Concept Visual" watermark
-- [ ] NASA data credits clearly displayed (POWER, Exoplanet Archive, GeneLab, DONKI)
-- [ ] CSA (Canadian Space Agency) Juno/LEADS badge visible
-- [ ] Live demo link functional and responsive
-- [ ] README.md includes data sources, team info, and pre-existing vs. hackathon sprint work
-- [ ] Dockerfile and deployment configs included
-- [ ] Backend tests pass: `pytest tests/ -v`
-- [ ] Frontend builds without errors: `npm run build`
-- [ ] ./start.sh script is executable and boots both services
+- [x] Video is ≤30 seconds and 1920×1080 MP4
+- [x] All SI-generated visuals marked with "SI-Generated Concept Visual" watermark
+- [x] NASA data credits clearly displayed (POWER, Exoplanet Archive, GeneLab, DONKI)
+- [x] CSA (Canadian Space Agency) Juno/LEADS badge visible
+- [x] Live demo link functional and responsive (Vercel + Render)
+- [x] README.md includes data sources, team info, and pre-existing vs. hackathon sprint work
+- [x] Dockerfile and deployment configs included
+- [x] Backend tests pass: `pytest tests/ -v`
+- [x] Frontend builds without errors: `npm run build`
+- [x] ./start.sh script is executable and boots both services
+
 
 ---
 
