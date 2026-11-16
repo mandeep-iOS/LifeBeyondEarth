@@ -8,9 +8,9 @@ An autonomous bio-dome mission simulator powered by **Super Intelligence (SI)** 
 
 ## 🚀 Live Hosted Deployment & Demo
 
-- **Live Web App (Vercel Frontend + Render Backend):** https://vercel.app
-- **Live FastAPI Swagger Docs (Render Backend):** https://onrender.com
-- **30-Second Project Demo Video:** https://youtu.be
+- **Live Web App (Vercel Frontend + Render Backend):** https://lifebeyondearth-public.vercel.app
+- **Live FastAPI Swagger Docs (Render Backend):** https://lifebeyondearth.onrender.com
+- **30-Second Project Demo Video:** https://youtu.be/Gf19hmTQ75Y
 
 > *Note: The backend runs on Render's free tier and may take ~30–45 seconds to wake up on the very first request.*
 
